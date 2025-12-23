@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giáng Sinh Ấm Áp ❤️</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div id="loading-screen">
+        <div class="loader-heart">❤️</div>
+        <p>Đang chuẩn bị điều bất ngờ...</p>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="/Triet - Feliz Navidad (mp3cut.net) (1).mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="music-control" onclick="toggleMusic()">
+        <i class="fas fa-music" id="musicIcon"></i>
+    </div>
+
+    <canvas id="snowCanvas"></canvas>
+    <div class="vignette"></div> <main class="scene">
+        <div class="header">
+            <h1 class="glow-text">Merry Christmas</h1>
+            <p class="subtitle">Dành tặng Bé Yêu</p>
+        </div>
+
+        <div class="santa-wrapper">
+             <img src="https://i.pinimg.com/originals/7f/1f/76/7f1f76ac29bc01ad318abbf0468b1062.gif" class="santa" alt="">
+        </div>
+                <div class="center-piece">
+
+    <img src="https://i.pinimg.com/originals/33/c7/92/33c792633b93a8581b2741f767664b58.gif"
+         class="christmas-tree">
+    <img src="https://i.pinimg.com/originals/36/8c/76/368c767c1328f4877ea62f31181d6712.gif" class="snow-man" alt="">    
+    <img src="https://i.pinimg.com/originals/a8/7a/d0/a87ad02139647e69ddd8e0bc47a3bb2d.gif" class="bear" alt="">
+        <div class="glow-behind"></div>
+            <div class="center-piece">
+            <div class="tree-container">
+                <div class="glow-behind"></div>
+                 <img src="https://i.pinimg.com/originals/3a/76/f3/3a76f392d88fb01045ad8d5cfd2adfa1.gif" class="santa-dog" alt="">
+            </div>  
+
+</div>  
+
+            <div class="gift-container" onclick="openGift()">
+                <div class="click-hint">
+                    <span>Mở quà đi em</span>
+                    <i class="fas fa-arrow-down"></i>
+                </div>
+                <img src="https://media.tenor.com/images/ce874f74efac88d8c591b3f842cbb202/tenor.gif" alt="Gift" class="gift-box">
+            </div>
+        </div>
+         
+    </main>
+        
+    <div class="modal-overlay" id="modal">
+        <div class="glass-card">
+            <button class="close-btn" onclick="closeModal()"><i class="fas fa-times"></i></button>
+            
+            <div id="gallery-content">
+                <h2 class="section-title">Khoảnh Khắc Đôi Ta</h2>
+                <div class="grid-gallery">
+                    <div class="grid-item" style="animation-delay: 0.1s"><img src="https://media-cdn-v2.laodong.vn/Storage/NewsPortal/2022/8/23/1084256/295497942_2922294937.jpg"></div>
+                    <div class="grid-item" style="animation-delay: 0.2s"><img src="https://i.pinimg.com/564x/f3/77/b0/f377b075429a32c45169389761031336.jpg"></div>
+                    <div class="grid-item" style="animation-delay: 0.3s"><img src="https://i.pinimg.com/736x/85/07/20/85072054378149110292790933928131.jpg"></div>
+                    <div class="grid-item" style="animation-delay: 0.4s"><img src="https://i.pinimg.com/564x/d9/39/26/d9392663955627685679457635205510.jpg"></div>
+                </div>
+                <button class="btn-primary" onclick="showLetter()">
+                    <i class="fas fa-envelope-open-text"></i> Đọc thư anh viết
+                </button>
+            </div>
+
+            <div id="letter-content" class="hidden">
+                <div class="letter-paper">
+                    <p id="typewriter"></p>
+                </div>
+                <div class="signature">Love you, forever. ❤️</div>
+            </div>
+        </div>
+    </div>
+<div class="signature-box">
+    <p class="sig-line-1">Someone stayed up late for this🫶🫶 </p>
+    <p class="sig-line-2">-MTR🐁</p>
+</div>
+
+    <script src="script.js"></script>
+</body>
+</html>

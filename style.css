@@ -1,0 +1,293 @@
+:root {
+    --primary: #ff3366;
+    --gold: #ffd700;
+    --dark-bg: #0f172a;
+    --glass: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    height: 100vh; overflow: hidden;
+    background: radial-gradient(circle at bottom, #1e293b 0%, #000000 100%);
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+}
+
+/* --- LOADING SCREEN --- */
+#loading-screen {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: #000; z-index: 9999;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    transition: opacity 1s ease;
+}
+.loader-heart { font-size: 3rem; animation: heartbeat 1s infinite; }
+@keyframes heartbeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.3); } }
+
+/* --- EFFECTS & BACKGROUND --- */
+#snowCanvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+.vignette {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle, transparent 50%, rgba(0,0,0,0.8) 100%);
+    pointer-events: none; z-index: 2;
+}
+
+/* --- TEXT STYLES --- */
+.header { position: absolute; top: 10%; width: 100%; text-align: center; z-index: 10; }
+.glow-text {
+    font-family: 'Dancing Script', cursive; font-size: 4.5rem;
+    color: #fff; text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary), 0 0 40px var(--primary);
+    animation: float 3s ease-in-out infinite;
+}
+.subtitle { font-size: 1.2rem; letter-spacing: 3px; color: var(--gold); margin-top: 10px; text-transform: uppercase; }
+
+/* --- MAIN SCENE --- */
+.center-piece {
+    position: absolute; bottom: 5%; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; z-index: 10;
+}
+
+.tree-container { position: relative; margin-bottom: -30px; }
+.tree { width: 380px; max-width: 90vw; filter: drop-shadow(0 0 20px rgba(0,255,100,0.3)); }
+.glow-behind {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 200px; height: 200px; background: rgba(33, 35, 33, 0.3);
+    filter: blur(50px); z-index: -1;
+}
+
+.santa-wrapper {
+    position: absolute; top: 20%; left: -300px; z-index: 5;
+    animation: flySanta 25s linear infinite;
+}
+.santa { width: 220px; filter: drop-shadow(0 10px 10px rgba(0,0,0,0.5)); }
+
+.gift-container { position: relative; cursor: pointer; transition: 0.3s; z-index: 20; }
+.gift-container:hover { transform: scale(1.1) translateY(-5px); }
+.gift-box { width: 110px; filter: drop-shadow(0 0 15px var(--gold)); animation: bounce 2s infinite; }
+.click-hint {
+    position: absolute; top: -40px; left: 50%; transform: translateX(-50%);
+    white-space: nowrap; background: rgba(255,255,255,0.2);
+    padding: 5px 15px; border-radius: 20px; font-size: 0.8rem;
+    backdrop-filter: blur(5px); animation: fadeInOut 2s infinite;
+}
+
+/* --- MUSIC CONTROL --- */
+.music-control {
+    position: fixed; bottom: 30px; right: 30px;
+    width: 50px; height: 50px; background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.3); border-radius: 50%;
+    display: flex; justify-content: center; align-items: center;
+    cursor: pointer; z-index: 100; backdrop-filter: blur(5px);
+    transition: 0.3s;
+}
+.music-control:hover { background: var(--primary); transform: rotate(360deg); }
+
+/* --- GLASS MODAL --- */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8); backdrop-filter: blur(15px);
+    z-index: 999; display: none; justify-content: center; align-items: center;
+    opacity: 0; transition: opacity 0.6s ease;
+}
+.modal-overlay.active { display: flex; opacity: 1; }
+
+.glass-card {
+    background: var(--glass); border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    border-radius: 24px; padding: 40px;
+    width: 90%; max-width: 850px; text-align: center;
+    position: relative; max-height: 90vh; overflow-y: auto;
+    animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.close-btn {
+    position: absolute; top: 20px; right: 20px; background: none; border: none;
+    color: white; font-size: 1.5rem; cursor: pointer; opacity: 0.7; transition: 0.3s;
+}
+.close-btn:hover { opacity: 1; transform: rotate(90deg); }
+
+.grid-gallery {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin: 30px 0;
+}
+.grid-item img {
+    width: 100%; height: 220px; object-fit: cover; border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.3);
+    transition: 0.4s;
+}
+.grid-item:hover img { transform: scale(1.05); border-color: var(--primary); }
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary), #ff6b6b);
+    color: white; padding: 15px 40px; border: none; border-radius: 50px;
+    font-size: 1.1rem; font-weight: 600; cursor: pointer;
+    box-shadow: 0 10px 20px rgba(255, 51, 102, 0.4); transition: 0.3s;
+}
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(255, 51, 102, 0.6); }
+
+/* --- LETTER --- */
+.hidden { display: none; }
+.letter-paper {
+    background: #fff; color: #333; padding: 40px;
+    border-radius: 10px; text-align: left;
+    font-family: 'Dancing Script', cursive; font-size: 1.8rem; line-height: 1.6;
+    background-image: linear-gradient(#e1e1e1 1px, transparent 1px);
+    background-size: 100% 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+.signature { margin-top: 30px; font-family: 'Dancing Script'; font-size: 2.5rem; color: var(--primary); }
+
+/* --- ANIMATIONS --- */
+@keyframes flySanta { 0% { left: -300px; transform: translateY(0) rotate(5deg); } 50% { transform: translateY(-40px); } 100% { left: 110%; transform: translateY(0); } }
+@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+/* Mobile */
+@media(max-width: 768px) {
+    .glow-text { font-size: 3rem; }
+    .tree { width: 300px; }
+    .grid-gallery { grid-template-columns: 1fr; }
+    .glass-card { padding: 20px; }
+    .grid-item img { height: 250px; }
+}
+.santa-tree {
+    position: absolute;
+    bottom: 150px;
+    left: 100px;
+    width: 400px;
+    z-index: 2;
+}
+
+/* ===== TREE & DOG CUSTOM ===== */
+.christmas-tree {
+    width: 760px;              /* TO – làm chủ */
+    position: absolute;
+    left: -260px;
+    transform: translateX(-50%);
+    bottom: -20%;              /* nhấc lên khỏi đáy */
+    z-index: 1;
+
+    filter:
+      drop-shadow(0 0 35px rgba(142, 7, 95, 0.35));
+}
+
+
+.center-piece {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: flex;
+    align-items: flex-end;
+    gap: 40px; /* khoảng cách giữa cây - quà - chó */
+
+    z-index: 10;
+}
+.gift-box {
+    width: 130px;
+    position: absolute;
+    left: 20%;
+    transform: translateX(-120px);
+    bottom: 10px;
+    z-index: 3;
+}
+
+
+@media(max-width: 768px) {
+    .center-piece {
+        
+        align-items: center;
+        gap: 20px;
+    }
+    
+}
+
+
+.gift-box {
+    position: relative;
+    z-index: 2;
+    pointer-events: auto;
+}
+.tree-container {
+    position: relative;
+    margin-bottom: -20px;
+}
+.santa {
+    position: absolute;
+    top: 30%;
+    left: -200px;
+    animation: flySanta 18s linear infinite;
+    opacity: 0.9;
+}
+
+@keyframes flySanta {
+    to { left: 110%; }
+}
+.santa-wrapper {
+    position: absolute;
+    top: 20%;
+    left: -200px;
+    z-index: 5;
+    animation: flySanta 20s linear infinite;
+    opacity: 1;
+}
+.santa {
+    width: 500px;   /* mặc định ~120px → tăng lên */
+}
+.santa-dog {
+  position: absolute;
+  bottom: 5%;       
+  right: -300px;     
+  width: 150px;       
+  animation: flySantaDog 18s linear infinite;
+  z-index: 9999;
+}@keyframes flySantaDog {
+  0% {
+    transform: translateX(-110vw); /* Ngoài mép trái */
+  }
+  100% {
+    transform: translateX(150vw); /* Bay ra ngoài mép phải */
+  }
+}
+.snow-man {
+  position: absolute;
+  bottom: -20px;
+  right: 370px;
+  width: 250px;
+  z-index: 20;
+}
+.bear {
+  position: absolute;
+  bottom: -20px;
+  right: 200px;
+  width: 200px;
+  z-index: 20;
+}
+.signature-box {
+    position: fixed;
+    right: 40px;
+    bottom: 120px;
+    text-align: right;
+    color: rgba(255, 255, 255, 0.6);
+    font-family: 'Montserrat', sans-serif;
+    z-index: 5;
+}
+
+.sig-line-1 {
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.sig-line-2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: rgba(211, 44, 172, 0.959); /* ánh nhẹ */
+}
+@media (max-width: 768px) {
+    .signature-box {
+        right: 20px;
+        bottom: 80px;
+    }
+}

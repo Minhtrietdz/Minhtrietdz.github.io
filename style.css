@@ -144,19 +144,53 @@ body {
 @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
 /* Mobile */
-@media(max-width: 768px) {
-    .glow-text { font-size: 3rem; }
-    .tree { width: 300px; }
-    .grid-gallery { grid-template-columns: 1fr; }
-    .glass-card { padding: 20px; }
-    .grid-item img { height: 250px; }
-}
-.santa-tree {
-    position: absolute;
-    bottom: 150px;
-    left: 100px;
-    width: 400px;
-    z-index: 2;
+/* ===== Mobile Landscape (xoay ngang) ===== */
+@media (max-width: 900px) and (orientation: landscape) {
+
+    /* Thu nhỏ tiêu đề */
+    .glow-text {
+        font-size: 2.6rem;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+    }
+
+    /* Thu gọn cụm cây – quà – chó */
+    .center-piece {
+        bottom: 2%;
+        transform: translateX(-50%) scale(0.85);
+        gap: 24px;
+    }
+
+    /* Cây thông nhỏ lại */
+    .christmas-tree {
+        width: 180px;
+    }
+
+    /* Con chó nhỏ lại */
+    .dog {
+        width: 180px;
+    }
+
+    /* Hộp quà nhỏ lại */
+    .gift-box {
+        width: 90px;
+    }
+
+    /* Santa bay thấp hơn chút */
+    .santa-tree {
+        top: 15%;
+        width: 260px;
+    }
+
+    /* Signature gọn hơn */
+    .signature-box {
+        right: 20px;
+        bottom: 60px;
+        font-size: 0.75rem;
+    }
 }
 
 /* ===== TREE & DOG CUSTOM ===== */

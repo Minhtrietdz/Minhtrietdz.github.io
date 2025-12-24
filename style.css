@@ -8,13 +8,22 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-body {
-    height: 100vh; overflow: hidden;
+html, body {
+    /* --- Code fix lỗi rung lắc & full màn hình --- */
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Chặn thanh cuộn */
+    position: fixed;  /* Giữ chặt khung hình trên mobile */
+
+    /* --- Code MÀU NỀN (Đã bị thiếu) --- */
     background: radial-gradient(circle at bottom, #1e293b 0%, #000000 100%);
+    
+    /* --- Code Font chữ chung --- */
     font-family: 'Montserrat', sans-serif;
     color: white;
 }
-
 /* --- LOADING SCREEN --- */
 #loading-screen {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -521,5 +530,135 @@ body.modal-open {
         width: 90px;
         bottom: 8%;
         animation-duration: 22s; /* chậm lại cho dịu */
+    }
+}
+.santa-dog {
+    position: absolute;
+    bottom: 20px;       /* Cách đáy màn hình 20px */
+    left: 0;            /* Bắt đầu từ toạ độ 0 trái */
+    width: 150px;       
+    animation: flySantaDog 18s linear infinite;
+    z-index: 50;        /* Tăng lên để đè lên các lớp khác */
+    will-change: transform; /* Giúp điện thoại mượt hơn, không bị giật lag */
+}
+
+/* Animation giữ nguyên, nhưng tối ưu lại một chút */
+@keyframes flySantaDog {
+    0% {
+        transform: translateX(-200px) scaleX(1); /* Chạy từ ngoài bên trái */
+    }
+    100% {
+        transform: translateX(120vw) scaleX(1);  /* Chạy hẳn ra ngoài bên phải */
+    }
+}
+/* ========================================= */
+/* CSS CHUẨN CHO ĐIỆN THOẠI (MOBILE)   */
+/* ========================================= */
+@media screen and (max-width: 600px) {
+
+    /* 1. Tiêu đề gọn gàng hơn */
+    .header {
+        top: 8%; /* Đẩy lên cao chút chừa chỗ cho cây */
+    }
+    .glow-text {
+        font-size: 2.8rem; /* Chữ nhỏ lại vừa mắt */
+        line-height: 1.2;
+    }
+    .subtitle {
+        font-size: 0.9rem;
+        margin-top: 5px;
+    }
+
+    /* 2. Căn chỉnh lại cụm trung tâm (Cây + Quà) */
+    .center-piece {
+        bottom: 12%; /* Nhấc lên cao khỏi đáy màn hình */
+        width: 100%;
+        display: flex;
+        justify-content: center; /* Căn giữa chiều ngang */
+        transform: none; /* Reset các transform cũ */
+        left: 0;
+    }
+
+    .tree-container {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+    /* 3. Cây thông tự co giãn theo màn hình */
+    .christmas-tree {
+        position: relative; /* Bỏ absolute để dễ căn giữa */
+        left: auto;
+        bottom: auto;
+        transform: none;
+        
+        width: 85vw; /* Chiều rộng chiếm 85% màn hình */
+        height:100px;
+        max-width: 320px; /* Không quá to */
+        height: auto; /* Chiều cao tự động theo tỷ lệ */
+        filter: drop-shadow(0 0 15px rgba(142, 7, 95, 0.5));
+    }
+
+    /* 4. Thu nhỏ mấy con trang trí để đỡ rối */
+    .snow-man {
+        width: 150px;
+        right: 4%;
+        bottom: 0;
+    }
+    .bear {
+        width: 120px;
+        right: auto;
+        left: 5%;
+        bottom: 0;
+    }
+
+    /* 5. Hộp quà - Quan trọng nhất (Làm to để dễ bấm) */
+    .gift-container {
+        position: absolute;
+        bottom: -20px; /* Đặt đè lên gốc cây một xíu */
+        left: 50%;
+        transform: translateX(-50%); /* Căn giữa tuyệt đối */
+        z-index: 50;
+        width: auto;
+    }
+    .gift-box {
+        position: relative;
+        left: auto;
+        bottom: auto;
+        transform: none;
+        width: 70px; /* To hơn để dễ bấm */
+        animation: bounce 2s infinite;
+    }
+    /* Gợi ý bấm */
+    .click-hint {
+        top: -30px;
+        font-size: 0.7rem;
+        padding: 4px 10px;
+    }
+
+    /* 6. Chữ ký tác giả */
+    .signature-box {
+        bottom: 10px;
+        right: 10px;
+        text-align: right;
+    }
+    .sig-line-1 { display: none; } /* Ẩn dòng dài dòng trên mobile cho gọn */
+    .sig-line-2 { font-size: 0.8rem; opacity: 0.5; }
+
+    /* 7. Con chó chạy (Chỉnh lại cho mobile) */
+    .santa-dog {
+        width: 100px; /* Nhỏ lại */
+        bottom: -20px; /* Chạy cao hơn xíu */
+    }
+    
+    /* 8. Santa bay trên trời */
+    .santa-wrapper {
+        top: 35%;
+    }
+    .santa {
+        width: 300px;
     }
 }

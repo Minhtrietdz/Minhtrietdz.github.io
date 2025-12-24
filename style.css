@@ -85,21 +85,36 @@ body {
 
 /* --- GLASS MODAL --- */
 .modal-overlay {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.8); backdrop-filter: blur(15px);
-    z-index: 999; display: none; justify-content: center; align-items: center;
-    opacity: 0; transition: opacity 0.6s ease;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100dvh;              /* 👈 QUAN TRỌNG */
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(15px);
+    z-index: 999;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;            /* 👈 chặn rung */
 }
-.modal-overlay.active { display: flex; opacity: 1; }
+.modal-overlay.active {
+    display: flex;
+}
 
 .glass-card {
-    background: var(--glass); border: 1px solid var(--glass-border);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    border-radius: 24px; padding: 40px;
-    width: 90%; max-width: 850px; text-align: center;
-    position: relative; max-height: 90vh; overflow-y: auto;
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 32px;
+
+    width: min(92vw, 850px);
+    max-height: 80dvh;          /* 👈 khóa chiều cao */
+    overflow-y: auto;           /* scroll bên trong */
+
+    box-shadow: 0 8px 32px rgba(0,0,0,0.37);
     animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
 
 .close-btn {
     position: absolute; top: 20px; right: 20px; background: none; border: none;
@@ -490,5 +505,21 @@ html, body {
 
     .sig-line-2 {
         font-size: 1.05rem;
+    }
+}
+body.modal-open {
+    overflow: hidden;
+    height: 100dvh;
+    position: fixed;
+    width: 100%;
+}
+.modal-open .modal-overlay {
+    display: flex;
+}
+@media (max-width: 480px) and (orientation: portrait) {
+    .santa-dog {
+        width: 90px;
+        bottom: 8%;
+        animation-duration: 22s; /* chậm lại cho dịu */
     }
 }

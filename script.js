@@ -100,16 +100,14 @@ const typeText = document.getElementById('typewriter');
 
 function openGift() {
     modal.classList.add('active');
-    document.body.style.overflow = "hidden"; // khóa scroll
-    document.body.style.height = "100vh";    // khóa chiều cao
+    document.body.classList.add('modal-open');
     if (!isPlaying) toggleMusic();
 }
 
 
 function closeModal() {
     modal.classList.remove('active');
-    document.body.style.overflow = "";
-    document.body.style.height = "";
+    document.body.classList.remove('modal-open');
 
     setTimeout(() => {
         gallery.classList.remove('hidden');

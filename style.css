@@ -195,7 +195,8 @@ body {
 
 /* ===== TREE & DOG CUSTOM ===== */
 .christmas-tree {
-    width: 760px;              /* TO – làm chủ */
+    width: 560px;              /* TO – làm chủ */
+    height: 660px;              /* TO – làm chủ */
     position: absolute;
     left: -260px;
     transform: translateX(-50%);
@@ -264,11 +265,11 @@ body {
     top: 20%;
     left: -200px;
     z-index: 5;
-    animation: flySanta 20s linear infinite;
+    animation: flySanta 18s linear infinite;
     opacity: 1;
 }
 .santa {
-    width: 500px;   /* mặc định ~120px → tăng lên */
+    width: 400px;   /* mặc định ~120px → tăng lên */
 }
 .santa-dog {
   position: absolute;
@@ -288,7 +289,7 @@ body {
 .snow-man {
   position: absolute;
   bottom: -20px;
-  right: 370px;
+  right: 360px;
   width: 250px;
   z-index: 20;
 }
@@ -323,5 +324,89 @@ body {
     .signature-box {
         right: 20px;
         bottom: 80px;
+    }
+}
+/* ===== MOBILE DỌC – THU NHỎ CÂY & TRANG TRÍ ===== */
+@media (max-width: 480px) and (orientation: portrait) {
+
+    /* Cây thông nhỏ lại rõ rệt */
+    .christmas-tree {
+        width: 350px;     /* 👈 giảm từ 760 */
+        height: 550px;     /* 👈 giảm từ 760 */
+        left: -80px;     /* kéo vào trong */
+        bottom: -20%;
+    }
+
+    /* Người tuyết nhỏ lại */
+    .snow-man {
+        width: 130px;
+        right: 50px;
+    }
+
+    /* Gấu nhỏ lại */
+    .bear {
+        width: 120px;
+        right: 150px;
+    }
+
+    /* Mấy đồ trang trí nhỏ (nếu có icon sao, phụ kiện) */
+    .tree-container img {
+        transform: scale(0.85);
+    }
+
+    /* Hộp quà nhỏ lại chút cho cân */
+    .gift-box {
+        width: 100px;
+        bottom: 5px;
+    }
+}
+/* ===== MOBILE DỌC – THU NHỎ CHÓ & NOEL ===== */
+@media (max-width: 480px) and (orientation: portrait) {
+
+    /* Con chó (cầm quà / chạy) */
+    .dog {
+        width: 160px;          /* 👈 giảm từ ~220 */
+        right: 80px;           /* chỉnh nếu cần */
+        bottom: 20px;
+    }
+
+    /* Santa chính (bay ngang) */
+    .santa {
+        width: 300px;          /* 👈 giảm từ 500 */
+    }
+
+    .santa-wrapper {
+        top: 10%;              /* bay cao hơn chút */
+    }
+
+    /* Santa-dog (nếu có con bay riêng) */
+    .santa-dog {
+        width: 110px;          /* 👈 nhỏ lại */
+    }
+}
+.dog {
+    position: absolute;
+    bottom: 5%;
+    right: -200px;
+    width: 220px;   /* mặc định ~150px → tăng lên */
+    z-index: 3;
+}
+/* ===== MOBILE DỌC – SIGNATURE GỌN GÀNG ===== */
+@media (max-width: 480px) and (orientation: portrait) {
+
+    .signature-box {
+        right: 16px;
+        bottom: 260px;          /* 👈 đẩy lên trên quà */
+        text-align: right;
+        opacity: 0.75;
+    }
+
+    .sig-line-1 {
+        font-size: 0.7rem;      /* nhỏ lại */
+        letter-spacing: 0.5px;
+    }
+
+    .sig-line-2 {
+        font-size: 1.1rem;      /* -MTR gọn hơn */
     }
 }

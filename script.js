@@ -2,16 +2,21 @@
 const letterContent = `
 Chào Bé Yêu của anh, 🌹
 
-Giáng sinh lại về rồi, anh chỉ muốn nói rằng em là món quà tuyệt vời nhất mà ông già Noel đã dành tặng cho anh.
-
-Cảm ơn em đã luôn ở bên, lắng nghe và chia sẻ mọi buồn vui cùng anh. Nụ cười của em chính là ánh sáng ấm áp nhất trong mùa đông này.
-
-Anh hứa sẽ luôn nắm chặt tay em, đi qua thêm nhiều mùa Giáng sinh nữa. Chúc em luôn xinh đẹp, hạnh phúc và bình an.
-
+Giáng Sinh này, điều tuyệt vời nhất với anh chính là có em bên cạnh. Giữa mùa đông lạnh giá, em chính là hơi ấm dịu dàng nhất của anh. Cảm ơn em vì đã mang đến cho anh những ngày thật ấm áp. Mong rằng chúng ta sẽ cùng nhau đi qua thật nhiều mùa Noel nữa. Chỉ cần có em bên cạnh, Noel nào cũng trở nên ngọt ngào hơn. Chúc cục dàng giáng sinh an lành, mãi cuti và luôn mang theo nụ cười trên môi suốt những tháng ngày sau nữa nhé!
 Yêu em nhiều lắm! ❤️
 
 Merry Christmas, my Princess! 🎄🎁
-`;
+
+
+
+
+
+
+Trang web này được tạo riêng để chúc cho tình yêu của HN & HN —
+mong rằng hai bạn sẽ luôn đồng hành cùng nhau thật lâu. ❤️
+—— A small page, built with love, for HN & HN.😻
+`
+;
 
 // --- 1. LOADING SCREEN ---
 window.addEventListener('load', () => {

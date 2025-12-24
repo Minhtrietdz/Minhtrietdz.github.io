@@ -410,3 +410,85 @@ body {
         font-size: 1.1rem;      /* -MTR gọn hơn */
     }
 }
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+/* ===== MOBILE DỌC – SCALE TỔNG THỂ ===== */
+@media (max-width: 480px) and (orientation: portrait) {
+
+    /* Header gọn lại */
+    .glow-text {
+        font-size: 2.6rem;
+    }
+
+    .subtitle {
+        font-size: 0.85rem;
+        letter-spacing: 1.5px;
+    }
+
+    /* Cụm chính nhỏ lại đồng loạt */
+    .center-piece {
+        transform: translateX(-50%) scale(0.8);
+        bottom: 4%;
+    }
+
+    /* Cây thông */
+    .christmas-tree {
+        width: 340px;
+        height: auto;
+        left: -60px;
+        bottom: -15%;
+    }
+
+    /* Người tuyết */
+    .snow-man {
+        width: 130px;
+        right: 220px;
+    }
+
+    /* Gấu */
+    .bear {
+        width: 120px;
+        right: 120px;
+    }
+
+    /* Hộp quà */
+    .gift-box {
+        width: 95px;
+    }
+
+    /* Chó */
+    .dog {
+        width: 150px;
+        right: -120px;
+    }
+
+    /* Santa bay */
+    .santa {
+        width: 260px;
+    }
+
+    .santa-wrapper {
+        top: 12%;
+    }
+}
+/* ===== TABLET – THU NHỎ CÂY & TRANG TRÍ ===== */
+/* ===== SIGNATURE – MOBILE DỌC ===== */
+@media (max-width: 480px) and (orientation: portrait) {
+    .signature-box {
+        right: 14px;
+        bottom: 220px;
+        opacity: 0.85;
+    }
+
+    .sig-line-1 {
+        font-size: 0.7rem;
+        letter-spacing: 0.3px;
+    }
+
+    .sig-line-2 {
+        font-size: 1.05rem;
+    }
+}

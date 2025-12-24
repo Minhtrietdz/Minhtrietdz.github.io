@@ -100,18 +100,24 @@ const typeText = document.getElementById('typewriter');
 
 function openGift() {
     modal.classList.add('active');
-    if (!isPlaying) toggleMusic(); // Tự bật nhạc nếu chưa bật
+    document.body.style.overflow = "hidden"; // khóa scroll
+    document.body.style.height = "100vh";    // khóa chiều cao
+    if (!isPlaying) toggleMusic();
 }
+
 
 function closeModal() {
     modal.classList.remove('active');
-    // Reset về mặc định sau khi đóng
+    document.body.style.overflow = "";
+    document.body.style.height = "";
+
     setTimeout(() => {
         gallery.classList.remove('hidden');
         letter.classList.add('hidden');
         typeText.innerHTML = '';
     }, 500);
 }
+
 
 function showLetter() {
     gallery.classList.add('hidden');
